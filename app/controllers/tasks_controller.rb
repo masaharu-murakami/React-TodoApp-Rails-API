@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:create]
   def index
     tasks = Task.all
     render json: tasks
@@ -11,7 +12,7 @@ class TasksController < ApplicationController
 
   private
 
-  def
-    params.parmit(:name, :is_done)
+  def task_params
+    params.permit(:name, :is_done)
   end
 end
