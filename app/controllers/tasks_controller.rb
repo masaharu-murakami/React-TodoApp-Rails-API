@@ -18,6 +18,12 @@ class TasksController < ApplicationController
     head :ok
   end
 
+  def update
+    task = Task.find(params[:id])
+    task.update(task_params)
+    head :ok
+  end
+
   private
 
   def task_params
